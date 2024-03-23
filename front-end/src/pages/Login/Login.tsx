@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from 'react'
 import './Login.css'
 import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
- 
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Login(){
 
@@ -37,22 +37,10 @@ function Login(){
       setEmailError("Please enter a valid email address")
       return
     }
-   
+
     if(email){
       return(
-      <>
-      {
-        <Routers>
-          {
-          <Routes>
-            <Route path='/' element={<Dashboard />}>
-            </Route>
-          </Routes>
-    }
-        </Routers>
-      }
-       
-      </>
+        <Navigate to='/Component/Home/Home'/>
       )
     }else{
       return <Navigate to='/Component/Login/Login'/>

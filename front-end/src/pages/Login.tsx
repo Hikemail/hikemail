@@ -45,7 +45,7 @@ function Login(){
         <Routers>
           {
           <Routes>
-            <Route path='/' element={<HomePage />}>
+            <Route path='/' element={<Home />}>
 
             </Route>
           </Routes>
@@ -64,7 +64,9 @@ function Login(){
 
     return(
     <div>
-    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, marginBottom: '450px', fontFamily: 'Arial, sans-serif' }}>HIKE</h1>
+    <div style={{ marginBottom: '450px', marginLeft: "650px"}}>
+    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>HIKE</h1>
+    </div>
     <div className="login-box">
         <form>
             <div className="user-box">
@@ -91,9 +93,9 @@ function Login(){
             <input onClick={onButtonClick}
             className={"inputButton"}
             type="button"      
-            value={"Submit"}
+            value={"LOGIN"}
             />
-            <p>Don't have an account yet? <a href="#"></a>Sign up!</p>
+            <p>Don't have an account yet? <a href="">Sign up!</a></p>
         </form>
  </div>
 </div>    

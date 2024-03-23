@@ -132,6 +132,9 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
 export default function Dashboard() {
   const [applications, setApplications] = React.useState<Application[]>([]);
   const [search, setSearch] = useState("");
+  let userID = localStorage.getItem('user_id')
+  console.log("user id is " + userID);
+
 
   const handleChange = (e:any) => {
     e.preventDefault();
@@ -139,7 +142,7 @@ export default function Dashboard() {
     console.log(search.length)
     if(search.length > 1)
     {
-      axios.get("https://api.hikemail.net/users/searchApplications/3/" + search)
+      axios.get("https://api.hikemail.net/users/searchApplications/" + userID + "/" + search)
           .then((res: any) => {
             console.log(res)
             setApplications(res.data.rows)
@@ -148,7 +151,7 @@ export default function Dashboard() {
           console.error(err)
           })
     } else {
-      axios.get("https://api.hikemail.net/users/getApplications/3")
+      axios.get("https://api.hikemail.net/users/getApplications/" + userID)
       .then((res: any) => {
         console.log(res)
         setApplications(res.data.rows)
@@ -236,7 +239,7 @@ export default function Dashboard() {
     //   company: "JP Morgan and Chase",
     // }
 
-    axios.get("https://api.hikemail.net/users/getApplications/3")
+    axios.get("https://api.hikemail.net/users/getApplications/" + userID)
       .then((res: any) => {
         console.log(res)
         setApplications(res.data.rows)

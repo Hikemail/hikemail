@@ -1,34 +1,34 @@
-import React from "react";
+import React from 'react';
 import "./Home.css";
+import {StyleSheet, View} from 'react-native';
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import HikeLogo from "../../assets/hike-logo.png";
-import Stacked from "../../assets/stacked-bg.svg";
+import ThreeBoxes from './ThreeBoxes'; 
 
 export default function Home() {
   const navigate = useNavigate();
-  const[isOpen, setOpen] = React.useState(false);
-  const onButtonClick = () => {
-    setOpen(!isOpen);
-  };
 
-  function handleScroll() {
-    window.scroll({
-      top: document.body.offsetHeight,
-      left: 0, 
-      behavior: 'smooth',
-    });
-  }
+  // const[isOpen, setOpen] = React.useState(false);
+  // const onButtonClick = () => {
+  //   setOpen(!isOpen);
+  // };
+
+  // function handleScroll() {
+  //   window.scroll({
+  //     top: document.body.offsetHeight,
+  //     left: 0, 
+  //     behavior: 'smooth',
+  //   });
+  // }
 
   return (
     <div className="home-container">
       <div className="home-showoff">
         <div className="home-brand-header">
-          <div className="home-title">HIKE</div>
+          <div className="home-title">hike</div>
           <img src={HikeLogo} alt="Hike Logo" className="home-logo" />
           <div>
-          <button className = "get-started" type="button" onClick={onButtonClick}>GET STARTED</button>
-          {isOpen && <div>Content</div>}
         </div>
         </div>
         <TypeAnimation
@@ -51,15 +51,15 @@ export default function Home() {
       </div>
       <div className="home-background"></div>{" "}
       <div className="home-card home-header">
-        <div className="home-primary-card">
+        {/* <div className="home-primary-card">
           <h2>Revolutionize the application process.</h2>
-        </div>
+        </div> */}
         <div
           className="home-secondary-card home-login"
           onClick={() => navigate("/login")}
         >
-          <h4>Already have an account?</h4>
-          <h2>Login</h2>
+          {/* <h3>Already have an account?</h3> */}
+          <h2>LOGIN</h2>
         </div>
       </div>
       <div className="home-card home-header">
@@ -67,14 +67,16 @@ export default function Home() {
           className="home-secondary-card"
           onClick={() => navigate("/signup")}
         >
-          <h4>Don't have an account?</h4>
-          <h2>Sign Up</h2>
+          {/* <h3>Don't have an account?</h3> */}
+          <h2>SIGN UP</h2>
         </div>
-        <div className="home-primary-card home-card home-secondary-level">
+        {/* <div className="home-primary-card home-card home-secondary-level">
           <h2>Apply with your personal hikemail.</h2>
           <h3>Track your applications with ease.</h3>
-        </div>
+        </div> */}
       </div>
+      <h5>How Hike Works</h5>
+      <ThreeBoxes />{" "}
     </div>
   );
 }

@@ -1,6 +1,6 @@
+import axios from "axios"
 import { useState } from 'react'
 import './Login.css'
-import tempHikeLogo from './static/tempHikeLogo.png'
 import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -49,40 +49,59 @@ function Login(){
 
   }
 
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
+
+  axios
+  .post("http://localhost:5178/login", {email, password})
+  .then(response => {
+    console.log(response)
+    // Handle response
+  })
+
     return(
     <div>
-    <div style={{ marginBottom: '450px', marginLeft: "650px"}}>
-    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>HIKE</h1>
+    <div style={{ marginBottom: '450px'}}>
+    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>hike</h1>
     </div>
     <div className="login-box">
-        <form>
+        <form action="" id="login" method="post" onSubmit={handleSubmit}>
             <div className="user-box">
+                {/* <label for="email"> Email </label> */}
                 <input  
-                value={email}
-                placeholder='Enter email address here' 
-                onChange={ev=> setEmail(ev.target.value)}
-                className={"user-box"}      
-                
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  placeholder='Enter email address here' 
+                  onChange={e=> setEmail(e.target.value)}
+                  className={"user-box"}      
                 />
-            
             <label className='errorLabel'>{emailError}</label>
             </div>
+
             <div className="user-box">
             <input 
+            type="password"
+            name="password"
+            id="password"
             value={password}
             placeholder='Enter password here'
-            onChange={ev=>setPassword(ev.target.value)}
+            onChange={e=>setPassword(e.target.value)}
             className={'user-box'}
-            
             />
             <label className='errorLabel'>{passwordError}</label>
             </div>
+
             <input onClick={onButtonClick}
             className={"inputButton"}
             type="button"      
             value={"LOGIN"}
             />
-            <p>Don't have an account yet? <a href="">Sign up!</a></p>
+            <div style={{ textAlign: 'center'}}>
+            <p>Don't have an account yet? <a href="/SignUp">Sign up!</a></p>
+            </div>
         </form>
  </div>
 </div>    

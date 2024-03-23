@@ -1,28 +1,28 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  --primary: #363e28;
-  --text: #1c1a0d;
-  --background: #efe7da;
-  --secondary: #a6bd9e;
-  --accent: #458e43;
-  --card: #E5DED1;
-}
-
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* This makes the container take up the full height of the viewport */
-  background-color: var(--background);
-  overflow: auto;
-}
-
-.content {
-  flex-grow: 1; /* This makes the content take up the rest of the space in the container */
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  color: var(--text);
-}
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+    --primary: #363e28;
+    --text: #1c1a0d;
+    --background: #efe7da;
+    --secondary: #a6bd9e;
+    --accent: #458e43;
+    --card: #E5DED1;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* This makes the container take up the full height of the viewport */
+    background-color: var(--background);
+    overflow: auto;
+  }
+  
+  .content {
+    flex-grow: 1; /* This makes the content take up the rest of the space in the container */
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+  }

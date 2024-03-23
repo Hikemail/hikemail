@@ -36,7 +36,7 @@ export default function Home() {
       <div className="home-background"></div>{" "}
       <div className="home-card home-header">
         <div className="home-primary-card">
-          <h3>Revolutionize the application process.</h3>
+          <h2>Revolutionize the application process.</h2>
         </div>
         <div
           className="home-secondary-card home-login"

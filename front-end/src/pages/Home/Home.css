@@ -135,6 +135,11 @@
   margin: 0;
 }
 
+.home-primary-card h2 {
+  font-size: 2em;
+  margin: 0;
+}
+
 .home-background {
   position: absolute;
   top: 0;

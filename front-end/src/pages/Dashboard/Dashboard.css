@@ -50,7 +50,7 @@
     flex: 1 2 0;
     max-width: 30%;
 }
-.fuckyou{
+.horizontal-border{
     height: 100px;
     margin-top: 50px;
     border-width: 3px;
@@ -58,4 +58,8 @@
 .box{
     background-color: #e5dcd0;
     border-radius: 10px;
+}
+.search-bar {
+    border-radius: 5px;
+    height: 60%;
 }

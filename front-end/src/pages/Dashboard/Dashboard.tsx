@@ -21,7 +21,7 @@ interface AppProps {
 const App : React.FC<AppProps> = ({id, position, status, company}) => 
 <li key={id}>
 <div className="application-instance">
-<hr className="fuckyou"/>
+<hr className="horizontal-border"/>
   <Box
   height={100}
   width={1000}
@@ -254,15 +254,12 @@ export default function Dashboard() {
       <h1> hike </h1>
       <div className="application-display">
       <h1>Applications</h1>
-      <input
-   type="text"
-   placeholder="Search here"
-   onChange={handleChange}
-   value={search} />
+      <input type="text" className="search-bar" placeholder=" Search Company Name" onChange={handleChange} value={search} />
 
       <ul className="mapped-applications">
         {applications.map(App)}
       </ul>
+
       </div>
     </div>
     </div>

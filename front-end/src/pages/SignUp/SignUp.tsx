@@ -1,6 +1,7 @@
+import axios from "axios"
 import { useState } from 'react'
 import './SignUp.css'
-import tempHikeLogo from './static/tempHikeLogo.png'
+import background from "../../assets/stacked-peaks-haikei.svg";
 import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
  
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -65,7 +66,7 @@ function SignUp(){
         <Routers>
           {
           <Routes>
-            <Route path='/' element={<Home />}>
+            <Route path='/' element={<Dashboard />}>
 
             </Route>
           </Routes>
@@ -82,18 +83,32 @@ function SignUp(){
 
   }
 
+  
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
+
+  axios
+  .post("http://localhost:5178/signup", {email, password})
+  .then(response => {
+    console.log(response)
+    // Handle response
+  })
+
     return(
     <div>
-    <div style={{ marginBottom: '600px', marginLeft: "650px"}}>
-    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>HIKE</h1>
-    </div>    <div className="signUp-box">
+    <div style={{backgroundImage: `url(${background})`}}></div>
+    <div style={{ marginBottom: '450px'}}>
+    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>hike</h1>        
+    </div>    
+    <div className="signUp-box">
         <form>
             {/* firstName */}
             <div className="signUp-user-box">
                 <input  
                 value={firstName}
                 placeholder='Enter your first name here' 
-                onChange={ev=> setFirstName(ev.target.value)}
+                onChange={e=> setFirstName(e.target.value)}
                 className={"signUp-user-box"}      
             />
             <label className='errorLabel'>{firstNameError}</label>
@@ -104,7 +119,7 @@ function SignUp(){
             <input 
             value={lastName}
             placeholder='Enter your last name here'
-            onChange={ev=>setLastName(ev.target.value)}
+            onChange={e=>setLastName(e.target.value)}
             className={'signUp-user-box'}
             />
             <label className='errorLabel'>{lastNameError}</label>
@@ -115,7 +130,7 @@ function SignUp(){
             <input 
             value={username}
             placeholder='Enter your hikemail username here'
-            onChange={ev=>setUsername(ev.target.value)}
+            onChange={e=>setUsername(e.target.value)}
             className={'signUp-user-box'}
             />
             <label className='errorLabel'>{usernameError}</label>
@@ -126,7 +141,7 @@ function SignUp(){
                 <input  
                 value={email}
                 placeholder='Enter email address here' 
-                onChange={ev=> setEmail(ev.target.value)}
+                onChange={e=> setEmail(e.target.value)}
                 className={"signUp-user-box"}      
             />
             <label className='errorLabel'>{emailError}</label>
@@ -137,7 +152,7 @@ function SignUp(){
             <input 
             value={password}
             placeholder='Enter password here'
-            onChange={ev=>setPassword(ev.target.value)}
+            onChange={e=>setPassword(e.target.value)}
             className={'signUp-user-box'}
             />
             <label className='errorLabel'>{passwordError}</label>

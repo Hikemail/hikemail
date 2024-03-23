@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
   createBrowserRouter,
-  RouterProvider
+  RouterProvider, BrowserRouter
 } from 'react-router-dom'
 import Home from './pages/Home/Home.tsx'
-import Login from './pages/Login.tsx'
+import Login from './pages/Login/Login.tsx'
 import './App.css'
-import SignUp from './pages/SignUp.tsx'
+import SignUp from './pages/SignUp/SignUp.tsx'
+// import Navbar from './components/navbar.jsx'
+
+// const App = () => {
+//     return (
+//       <BrowserRouter>
+//         <Navbar />
+//       </BrowserRouter>
+//     )
+//   }
 
 const router = createBrowserRouter([
   {

@@ -32,6 +32,9 @@ html {
     position: relative;
   }
   
+  .login-box .user-box::placeholder{
+    color: #a6bd9e;
+  } 
   .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
@@ -49,7 +52,7 @@ html {
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: #458e43;
+    color: #363e28;
     pointer-events: none;
     transition: 0.5s;
   }
@@ -65,11 +68,11 @@ html {
   .login-box form a {
     position: relative;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10 px 5 px;
     color: #1c1a0d;
     font-size: 16px;
     text-decoration: underline;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     overflow: hidden;
     transition: .5s;
     /* margin-top: 40px; */
@@ -108,7 +111,7 @@ html {
   .login-box a span:nth-child(2) {
     top: -100%;
     right: 0;
-    width: 2px;
+    width: 200px;
     height: 100%;
     background: linear-gradient(180deg, transparent, #1c1a0d);
     animation: btn-anim2 1s linear infinite;
@@ -216,13 +219,13 @@ html {
     width: 400px;
     font-size: large;
     border-radius: 8px;
-    border: 1px solid #458e43;
+    border: 1px solid #363e28;
     padding-left: 8px;
   }
 
   input[type="button"] {
     border: none;
-    background: #458e43;
+    background: #363e28;
     color: white;
     padding: 12px 24px;
     margin: auto;

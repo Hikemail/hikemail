@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Inputs {
   username: string;
@@ -40,12 +40,10 @@ function SignUp() {
       })
       .then((response) => {
         console.log(response);
-        // Handle response
-        navigate("/dashboard");
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
-        // Handle error
       });
   };
 
@@ -57,7 +55,7 @@ function SignUp() {
             <h1>Sign Up</h1>
             <p>
               Already have an account?{" "}
-              <a href="/Component/Login/Login">Log in here</a>
+              <Link to="/login">Log in here</Link>
             </p>
           </div>
         </div>
@@ -87,6 +85,7 @@ function SignUp() {
                 placeholder="password"
                 {...register("password")}
                 required
+                type="password"
               />
               <span className="error-text">{errors.password?.message}</span>
             </div>
@@ -96,6 +95,7 @@ function SignUp() {
                 placeholder="confirm password"
                 {...register("confirmPassword")}
                 required
+                type="password"
               />
               <span className="error-text">
                 {errors.confirmPassword?.message}

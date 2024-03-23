@@ -1,0 +1,109 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(../../assets/blob-scene-haikei.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;  
+}
+
+.signup-form-box {
+  background-color: var(--card);
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: 60%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 1em;
+  height: auto;
+}
+
+.signup-info-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../assets/low-poly-grid-haikei.svg);
+  background-size: cover;
+  border-radius: 15px 0 0 15px;
+}
+
+.signup-info {
+  color: var(--text);
+  text-align: center;
+  width: 80%;
+}
+
+.signup-info h1 {
+  color: var(--primary);
+}
+
+.signup-form-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-user-input {
+  margin: 0.5em 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 1em;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  width: 100%;
+
+}
+.error-text {
+  color: red;
+  margin-top: 5px; 
+  font-size: 0.8em; 
+  height: 1em; 
+  display: block; 
+}
+
+.signup-button {
+  margin: 1em 0;
+  width: 100%;
+  background-color: var(--secondary);
+}
+
+.signup-button:hover {
+  background-color: var(--accent);
+}
+
+.signup-email-username {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+}
+
+.signup-email-username input {
+  width: 48%;
+  border-radius: 5px 0 0 5px;
+}
+
+.signup-static-mail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--secondary);
+  border-radius: 0 5px 5px 0;
+  color: var(--text);
+  padding: 1em;
+}

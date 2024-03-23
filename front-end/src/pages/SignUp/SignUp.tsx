@@ -1,172 +1,115 @@
-import axios from "axios"
-import { useState } from 'react'
-import './SignUp.css'
-import background from "../../assets/stacked-peaks-haikei.svg";
-import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
- 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function SignUp(){
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const[password, setPassword] = useState("")
-  const [firstNameError, setFirstNameError] = useState("")
-  const [lastNameError, setLastNameError] = useState("")
-  const [usernameError, setUsernameError] = useState("")
-  const [emailError, setEmailError] = useState("")
-  const[passwordError, setPasswordError] = useState("")
-//  const navigate = useNavigate();
+import "./SignUp.css";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+import * as yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
 
-  const onButtonClick = () =>{
-    setFirstNameError("")
-    setLastNameError("")
-    setUsernameError("")
-    setEmailError("")
-    setPasswordError("")
-
-    if("" === firstName)
-    {
-      setFirstNameError("Please enter your first name")
-      return
-    }
-    if("" === lastName)
-    {
-      setLastNameError("Please enter your last name")
-      return
-    }
-    if("" === username)
-    {
-      setUsernameError("Please enter your username")
-      return
-    }
-    if("" === email){
-      setEmailError("Please enter your email")
-      return
-    }
-    if("" === password)
-    {
-      setPasswordError("Please enter a password")
-      return
-    }
-    if(password.length<7){
-      setPasswordError("Password must be 8 character or longer")
-      return
-    }
-
-    if(!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)){
-      setEmailError("Please enter a valid email address")
-      return
-    }
-   
-    if(email){
-      return(
-      <>
-      {
-        <Routers>
-          {
-          <Routes>
-            <Route path='/' element={<Dashboard />}>
-
-            </Route>
-          </Routes>
-    }
-        </Routers>
-      }
-       
-      </>
-      )
-    }else{
-      return <Navigate to='/Component/SignUp/SignUp'/>
-    }
-  //navigate("../Home")
-
-  }
-
-  
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
-
-  axios
-  .post("http://localhost:5178/signup", {email, password})
-  .then(response => {
-    console.log(response)
-    // Handle response
-  })
-
-    return(
-    <div>
-    <div style={{backgroundImage: `url(${background})`}}></div>
-    <div style={{ marginBottom: '450px'}}>
-    <h1 style={{fontWeight: 'bolder', fontStyle: 'italic', fontSize: 100, fontFamily: 'Arial, sans-serif', textAlign: 'center'}}>hike</h1>        
-    </div>    
-    <div className="signUp-box">
-        <form>
-            {/* firstName */}
-            <div className="signUp-user-box">
-                <input  
-                value={firstName}
-                placeholder='Enter your first name here' 
-                onChange={e=> setFirstName(e.target.value)}
-                className={"signUp-user-box"}      
-            />
-            <label className='errorLabel'>{firstNameError}</label>
-            </div>
-
-            {/* lastName */}
-            <div className="signUp-user-box">
-            <input 
-            value={lastName}
-            placeholder='Enter your last name here'
-            onChange={e=>setLastName(e.target.value)}
-            className={'signUp-user-box'}
-            />
-            <label className='errorLabel'>{lastNameError}</label>
-            </div>
-
-            {/* username */}
-            <div className="signUp-user-box">
-            <input 
-            value={username}
-            placeholder='Enter your hikemail username here'
-            onChange={e=>setUsername(e.target.value)}
-            className={'signUp-user-box'}
-            />
-            <label className='errorLabel'>{usernameError}</label>
-            </div>
-            
-            {/* email */}
-            <div className="signUp-user-box">
-                <input  
-                value={email}
-                placeholder='Enter email address here' 
-                onChange={e=> setEmail(e.target.value)}
-                className={"signUp-user-box"}      
-            />
-            <label className='errorLabel'>{emailError}</label>
-            </div>
-
-            {/* password */}
-            <div className="signUp-user-box">
-            <input 
-            value={password}
-            placeholder='Enter password here'
-            onChange={e=>setPassword(e.target.value)}
-            className={'signUp-user-box'}
-            />
-            <label className='errorLabel'>{passwordError}</label>
-            </div>
-
-            <input onClick={onButtonClick}
-            className={"signUpButton"}
-            type="signButton"      
-            value={"SIGN UP"}
-            />
-        </form>
- </div>
-</div>    
-)
+interface Inputs {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
-export default SignUp
+const schema = yup.object().shape({
+  username: yup.string().required().min(6).max(20,
+    "Username must be between 6 and 20 characters"),
+  email: yup.string().email().required(),
+  password: yup.string().required().min(8).max(32),
+  confirmPassword: yup.string().required().oneOf([yup.ref("password")], "Passwords must match"),
+});
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function SignUp() {
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    axios
+      .post("https://api.hikemail.net/users", {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      })
+      .then((response) => {
+        console.log(response);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div className="signup-container">
+      <div className="signup-form-box">
+        <div className="signup-info-container">
+          <div className="signup-info">
+            <h1>Sign Up</h1>
+            <p>
+              Already have an account?{" "}
+              <Link to="/login">Log in here</Link>
+            </p>
+          </div>
+        </div>
+        <div className="signup-form-container">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="signup-user-input">
+              <div className="signup-email-username">
+                <input
+                  placeholder="username"
+                  {...register("username", { required: true })}
+                />
+                <span className="signup-static-mail">
+                  @hikemail.net
+                </span>
+              </div>
+              <span className="error-text">
+                {errors.username && "This field is required"}
+              </span>
+            </div>
+            <div className="signup-user-input">
+              <input placeholder="email" {...register("email")} required />
+              <span className="error-text">{errors.email?.message}</span>
+            </div>
+
+            <div className="signup-user-input">
+              <input
+                placeholder="password"
+                {...register("password")}
+                required
+                type="password"
+              />
+              <span className="error-text">{errors.password?.message}</span>
+            </div>
+
+            <div className="signup-user-input">
+              <input
+                placeholder="confirm password"
+                {...register("confirmPassword")}
+                required
+                type="password"
+              />
+              <span className="error-text">
+                {errors.confirmPassword?.message}
+              </span>
+            </div>
+
+            <div className="signup-user-input">
+              <input type="submit" className="signup-button" value="Sign Up" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default SignUp;

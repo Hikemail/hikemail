@@ -3,7 +3,7 @@ import "./Home.css";
 import {StyleSheet, View} from 'react-native';
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-import HikeLogo from "../../assets/hike-logo.png";
+import HikeLogo from "../../assets/hike-logo.webp";
 import ThreeBoxes from './ThreeBoxes'; 
 
 export default function Home() {
@@ -75,7 +75,7 @@ export default function Home() {
           <h3>Track your applications with ease.</h3>
         </div> */}
       </div>
-      <h5>How Hike Works</h5>
+      {/* <h5>How Hike Works</h5> */}
       <ThreeBoxes />{" "}
     </div>
   );

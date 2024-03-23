@@ -17,7 +17,7 @@
 }
 
 .home-logo {
-  max-width: 15%; /* Adjust this value as needed */
+  max-width: 20%; /* Adjust this value as needed */
 }
 
 .home-title {
@@ -99,6 +99,8 @@
   padding: 1em;
   margin: 0 1em 0 1em;
   justify-content: center;
+      box-shadow: 0 4px 8px #1c1a0d; /* Add box shadow */
+
 }
 
 .home-secondary-card:hover {
@@ -151,10 +153,10 @@
   background-size: cover;
 }
 
-h5 {
+/* h5 {
   text-align: center;
   font-size:xxx-large;
   margin-top: 2%;
   margin-bottom: 1%;
   font-style:bold;
-}
+} */

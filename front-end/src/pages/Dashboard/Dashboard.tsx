@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./Dashboard.css";
 import Box from '@mui/material/Box';
+import axios from "axios"
 
 interface Application {
   id: number,
@@ -17,6 +18,7 @@ interface AppProps {
   company: string;
 }
 
+let filtered:any;
 
 const App : React.FC<AppProps> = ({id, position, status, company}) => 
 <li key={id}>
@@ -34,7 +36,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
   // sx={{ border: '3px solid grey' }}> */}
     <div className="application-info">
       <h2 className="company-name">{company}</h2>
-      <text className="position">Position: {position}</text>
+      <text className="position">Position: {position != '' ? "Not found" : position} </text>
     </div>
     <div className="application-status">
         
@@ -167,10 +169,16 @@ export default function Dashboard() {
       status: 0,
       company: "JP Morgan and Chase",
     }
-    setApplications([entry1, entry2, entry3, entry4, entry5]);
 
-
-  })
+    axios.get("https://api.hikemail.net/users/getApplications/3")
+      .then((res: any) => {
+        console.log(res)
+        setApplications(res.data.rows)
+      })
+      .catch((err: Error) => {
+        console.error(err)
+      })
+  },[]);
 
 
   return (

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './SignUp.css'
-import { Navigate } from 'react-router-dom'
-
+import tempHikeLogo from './static/tempHikeLogo.png'
+import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
+ 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function SignUp(){
   const [firstName, setFirstName] = useState("")
@@ -56,11 +57,26 @@ function SignUp(){
       setEmailError("Please enter a valid email address")
       return
     }
-
+   
     if(email){
-      return <Navigate to='/login'/>
+      return(
+      <>
+      {
+        <Routers>
+          {
+          <Routes>
+            <Route path='/' element={<Home />}>
+
+            </Route>
+          </Routes>
+    }
+        </Routers>
+      }
+       
+      </>
+      )
     }else{
-      return <Navigate to='/signup'/>
+      return <Navigate to='/Component/SignUp/SignUp'/>
     }
   //navigate("../Home")
 

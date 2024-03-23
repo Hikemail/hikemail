@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Login.css'
-import { Navigate } from 'react-router-dom'
+import tempHikeLogo from './static/tempHikeLogo.png'
+import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Login(){

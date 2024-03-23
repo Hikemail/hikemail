@@ -21,16 +21,19 @@ interface AppProps {
 const App : React.FC<AppProps> = ({id, position, status, company}) => 
 <li key={id}>
 <div className="application-instance">
+<hr className="fuckyou"/>
   <Box
   height={100}
-  width={700}
+  width={1000}
   my={4}
   display="flex"
   alignItems="center"
   p={2}
-  sx={{ border: '2px solid grey' }}>
+  className = "box">
+  {/* // borderRadius='30px'
+  // sx={{ border: '3px solid grey' }}> */}
     <div className="application-info">
-      <h3 className="company-name">{company}</h3>
+      <h2 className="company-name">{company}</h2>
       <text className="position">Position: {position}</text>
     </div>
     <div className="application-status">
@@ -41,13 +44,13 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 0 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
           >
           </div>
-          <div className="bubble-text">
+          <div style = {{textAlign:"center"}} className="bubble-text">
             <text> Under Review </text>
           </div>
         </div>
@@ -57,7 +60,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 1 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -74,7 +77,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 2 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -91,7 +94,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 3 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -108,7 +111,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 4 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -152,7 +155,7 @@ export default function Dashboard() {
       <div className="dash-title">
       <h1> hike </h1>
       <div className="application-display">
-      <h3>Applications</h3>
+      <h1>Applications</h1>
       <ul className="mapped-applications">
         {applications.map(App)}
       </ul>

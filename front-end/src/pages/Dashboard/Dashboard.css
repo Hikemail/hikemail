@@ -34,12 +34,14 @@
 .application-status {
     display: flex;
     flex-direction: row;
-    gap: 7%;
+    gap: 5%;
 }
 .stage {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 12%;
+    gap: 10%;
 
 }
 .application-info {
@@ -47,4 +49,13 @@
     flex-direction: column;
     flex: 1 2 0;
     max-width: 30%;
+}
+.fuckyou{
+    height: 100px;
+    margin-top: 50px;
+    border-width: 3px;
+}
+.box{
+    background-color: #e5dcd0;
+    border-radius: 10px;
 }

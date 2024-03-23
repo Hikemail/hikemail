@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
-import Dashboard from "./pages/Dashboard"
+import Dashboard from './pages/Dashboard/Dashboard.tsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {

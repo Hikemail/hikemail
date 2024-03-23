@@ -12,7 +12,7 @@ export default function Home() {
     <div className="home-container">
       <div className="home-showoff">
         <div className="home-brand-header">
-          <div className="home-title">hike</div>
+          <div className="home-title">HIKE</div>
           <img src={HikeLogo} alt="Hike Logo" className="home-logo" />
         </div>
         <TypeAnimation

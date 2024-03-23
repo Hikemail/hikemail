@@ -1,0 +1,50 @@
+.dash-page {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+}
+.dash-title {
+    padding-left: 3%;
+}
+.application-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.application-info {
+    display: flex;
+    flex-direction: column;
+}
+.mapped-applications {
+    list-style-type: none;
+}
+.company-name {
+    flex-direction: column;
+}
+.position {
+    flex-direction: column;
+}
+.status {
+    flex-direction: column;
+}
+.application-instance {
+    display: flex;
+    flex-direction: row;
+}
+.application-status {
+    display: flex;
+    flex-direction: row;
+    gap: 7%;
+}
+.stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.application-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1 2 0;
+    max-width: 30%;
+}

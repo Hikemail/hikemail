@@ -1,9 +1,7 @@
-import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import HikeLogo from "../../assets/hike-logo.png";
-import BlobScene from "../../assets/blob-scene-haikei.svg";
 
 export default function Home() {
   const navigate = useNavigate();

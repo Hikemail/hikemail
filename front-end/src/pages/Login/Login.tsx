@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from 'react'
 import './Login.css'
 import { BrowserRouter as Routers, Routes , Route, Navigate } from 'react-router-dom'

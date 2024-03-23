@@ -108,7 +108,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
         <div className="stage">
         <div
             style={{
-              backgroundColor: `${status === 4 ? "#a6bd9e" : null}`,
+              backgroundColor: `${status === 4 ? "#fa8072" : null}`,
               height: "15px",
               width: "15px",
               border: "3px solid darkgray",
@@ -144,7 +144,30 @@ export default function Dashboard() {
       status: 2,
       company: "Lockheed Martin",
     }
-    setApplications([entry1, entry2]);
+    let entry3 = {
+      id: 3,
+      position: "Business Analyst",
+      user: "urmommy",
+      status: 3,
+      company: "Figma",
+    }
+
+    let entry4 = {
+      id: 4,
+      position: "Data Analyst",
+      user: "weiuuhprfuhi p iu",
+      status: 4,
+      company: "HEB",
+    }
+
+    let entry5 = {
+      id: 5,
+      position: "Software Engineer",
+      user: "setge hwrhg b p iu",
+      status: 0,
+      company: "JP Morgan and Chase",
+    }
+    setApplications([entry1, entry2, entry3, entry4, entry5]);
 
 
   })

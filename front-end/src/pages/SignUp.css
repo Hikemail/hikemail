@@ -7,8 +7,8 @@ html {
     font-family: sans-serif;
     background: #EFE7DA;
   }
-  
-  .login-box {
+ 
+  .signUp-box {
     position: absolute;
     top: 60%;
     left: 50%;
@@ -20,19 +20,19 @@ html {
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     border-radius: 10px;
   }
-  
-  .login-box h2 {
+ 
+  .signUp-box h2 {
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
   }
-  
-  .login-box .user-box {
+ 
+  .signUp-box .signUp-user-box {
     position: relative;
   }
-  
-  .login-box .user-box input {
+ 
+  .signUp-box .signUp-user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -43,59 +43,63 @@ html {
     outline: none;
     background: transparent;
   }
-  .login-box .user-box label {
+  .signUp-box .signUp-user-box label {
     position: absolute;
     top:0;
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color: #458e43;
+    color: #fff;
     pointer-events: none;
-    transition: 0.5s;
+    transition: .5s;
   }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
+ 
+  .signUp-box .signUp-user-box input:focus ~ label,
+  .signUp-box .signUp-user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #1c1a0d;
+    color: #a6bd9e;
     font-size: 12px;
   }
-  
-  .login-box form a {
+ 
+  .signUp-box form a {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #1c1a0d;
+    color: #a6bd9e;
     font-size: 16px;
-    text-decoration: underline;
+    text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    /* margin-top: 40px; */
-    letter-spacing: 4px;
-    text-align: center;
+    margin-top: 40px;
+    letter-spacing: 4px
   }
-  
-  .login-box a:hover {
+ 
+  .signUp-box a:hover {
+    background: #a6bd9e;
     color: #fff;
-    border-radius: 1px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #a6bd9e,
+                0 0 25px #a6bd9e,
+                0 0 50px #a6bd9e,
+                0 0 100px #a6bd9e;
   }
-  
-  .login-box a span {
+ 
+  .signUp-box a span {
     position: absolute;
     display: block;
   }
-  
-  .login-box a span:nth-child(1) {
+ 
+  .signUp-box a span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #1c1a0d);
+    background: linear-gradient(90deg, transparent, #a6bd9e);
     animation: btn-anim1 1s linear infinite;
   }
-  
+ 
   @keyframes btn-anim1 {
     0% {
       left: -100%;
@@ -104,17 +108,17 @@ html {
       left: 100%;
     }
   }
-  
-  .login-box a span:nth-child(2) {
+ 
+  .signUp-box a span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #1c1a0d);
+    background: linear-gradient(180deg, transparent, #a6bd9e);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
-  
+ 
   @keyframes btn-anim2 {
     0% {
       top: -100%;
@@ -123,17 +127,17 @@ html {
       top: 100%;
     }
   }
-  
-  .login-box a span:nth-child(3) {
+ 
+  .signUp-box a span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #1c1a0d);
+    background: linear-gradient(270deg, transparent, #a6bd9e);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
-  
+ 
   @keyframes btn-anim3 {
     0% {
       right: -100%;
@@ -142,17 +146,17 @@ html {
       right: 100%;
     }
   }
-  
-  .login-box a span:nth-child(4) {
+ 
+  .signUp-box a span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #1c1a0d);
+    background: linear-gradient(360deg, transparent, #a6bd9e);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }
-  
+ 
   @keyframes btn-anim4 {
     0% {
       bottom: -100%;
@@ -161,7 +165,7 @@ html {
       bottom: 100%;
     }
   }
-  
+ 
   .mainContainer {
     flex-direction: column;
     display: flex;
@@ -169,7 +173,7 @@ html {
     justify-content: center;
     height: 100vh;
   }
-  
+ 
   .titleContainer {
     display: flex;
     flex-direction: column;
@@ -178,15 +182,15 @@ html {
     align-items: center;
     justify-content: center;
   }
-  
-  .resultContainer, .historyItem { 
+ 
+  .resultContainer, .historyItem {
     flex-direction: row;
     display: flex;
     width: 400px;
     align-items: center;
     justify-content: space-between;
   }
-  
+ 
   .historyContainer {
     flex-direction: column;
     display: flex;
@@ -195,7 +199,7 @@ html {
     flex-grow: 5;
     justify-content: flex-start;
   }
-  
+ 
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -203,31 +207,37 @@ html {
     justify-content: center;
     height: 260px;
   }
-  
+ 
   .inputContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
   }
-  
+ 
+  .inputContainer > .errorLabel {
+    color: red;
+    font-size: 12px;
+  }
+ 
   .inputBox {
     height: 48px;
     width: 400px;
     font-size: large;
     border-radius: 8px;
-    border: 1px solid #458e43;
+    border: 1px solid grey;
     padding-left: 8px;
   }
-
-  input[type="button"] {
+  input[type="signButton"] {
     border: none;
     background: #458e43;
     color: white;
     padding: 12px 24px;
     margin: auto;
-    font-size: 25px;
+    font-size: 15px;
     border-radius: 8px;
     cursor: pointer;
+    text-align: center;
     display: block;
-  }
+}
+

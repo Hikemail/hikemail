@@ -254,8 +254,7 @@ export default function Dashboard() {
       <h1> hike </h1>
       <div className="application-display">
       <h1>Applications</h1>
-      <input type="text" className="search-bar" placeholder=" Search Company Name" onChange={handleChange} value={search} />
-
+      <input type="text" className="search-bar" placeholder=" Search" onChange={handleChange} value={search} />
       <ul className="mapped-applications">
         {applications.map(App)}
       </ul>

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import Box from '@mui/material/Box';
+import axios from "axios"
 
 interface Application {
   id: number,
@@ -17,21 +18,23 @@ interface AppProps {
   company: string;
 }
 
-
 const App : React.FC<AppProps> = ({id, position, status, company}) => 
 <li key={id}>
 <div className="application-instance">
+<hr className="horizontal-border"/>
   <Box
   height={100}
-  width={700}
+  width={1000}
   my={4}
   display="flex"
   alignItems="center"
   p={2}
-  sx={{ border: '2px solid grey' }}>
+  className = "box">
+  {/* // borderRadius='30px'
+  // sx={{ border: '3px solid grey' }}> */}
     <div className="application-info">
-      <h3 className="company-name">{company}</h3>
-      <text className="position">Position: {position}</text>
+      <h2 className="company-name">{company}</h2>
+      <text className="position">Position: {position != '' ? "Not found" : position} </text>
     </div>
     <div className="application-status">
         
@@ -41,13 +44,13 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 0 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
           >
           </div>
-          <div className="bubble-text">
+          <div style = {{textAlign:"center"}} className="bubble-text">
             <text> Under Review </text>
           </div>
         </div>
@@ -57,7 +60,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 1 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -74,7 +77,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 2 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -91,7 +94,7 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
               backgroundColor: `${status === 3 ? "#a6bd9e" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -105,10 +108,10 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
         <div className="stage">
         <div
             style={{
-              backgroundColor: `${status === 4 ? "#a6bd9e" : null}`,
+              backgroundColor: `${status === 4 ? "#fa8072" : null}`,
               height: "15px",
               width: "15px",
-              border: "1px solid lightgray",
+              border: "3px solid darkgray",
               borderRadius: "50%",
             }}
             className="bubble"
@@ -123,28 +126,126 @@ const App : React.FC<AppProps> = ({id, position, status, company}) =>
   </div>
 </li>
 
+
+
+
 export default function Dashboard() {
   const [applications, setApplications] = React.useState<Application[]>([]);
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e:any) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+    console.log(search.length)
+    if(search.length > 1)
+    {
+      axios.get("https://api.hikemail.net/users/searchApplications/3/" + search)
+          .then((res: any) => {
+            console.log(res)
+            setApplications(res.data.rows)
+          })
+          .catch((err: Error) => {
+          console.error(err)
+          })
+    } else {
+      axios.get("https://api.hikemail.net/users/getApplications/3")
+      .then((res: any) => {
+        console.log(res)
+        setApplications(res.data.rows)
+      })
+      .catch((err: Error) => {
+      console.error(err)
+      })
+      // let entry1 = {
+      //   id: 1,
+      //   position: "SWE",
+      //   user: "kshitij",
+      //   status: 1,
+      //   company: "ANB Systems",
+      // }
+      // let entry2 = {
+      //   id: 2,
+      //   position: "SWE",
+      //   user: "sum",
+      //   status: 2,
+      //   company: "Lockheed Martin",
+      // }
+      // let entry3 = {
+      //   id: 3,
+      //   position: "Business Analyst",
+      //   user: "urmommy",
+      //   status: 3,
+      //   company: "Figma",
+      // }
+  
+      // let entry4 = {
+      //   id: 4,
+      //   position: "Data Analyst",
+      //   user: "weiuuhprfuhi p iu",
+      //   status: 4,
+      //   company: "HEB",
+      // }
+  
+      // let entry5 = {
+      //   id: 5,
+      //   position: "Software Engineer",
+      //   user: "setge hwrhg b p iu",
+      //   status: 0,
+      //   company: "JP Morgan and Chase",
+      // }
+      // setApplications([entry1, entry2, entry3, entry4, entry5]);
+    }
+  }
   useEffect(() => {
 
-    let entry1 = {
-      id: 1,
-      position: "SWE",
-      user: "kshitij",
-      status: 1,
-      company: "ANB Systems",
-    }
-    let entry2 = {
-      id: 2,
-      position: "SWE",
-      user: "sum",
-      status: 2,
-      company: "Lockheed Martin",
-    }
-    setApplications([entry1, entry2]);
+    // let entry1 = {
+    //   id: 1,
+    //   position: "SWE",
+    //   user: "kshitij",
+    //   status: 1,
+    //   company: "ANB Systems",
+    // }
+    // let entry2 = {
+    //   id: 2,
+    //   position: "SWE",
+    //   user: "sum",
+    //   status: 2,
+    //   company: "Lockheed Martin",
+    // }
+    // let entry3 = {
+    //   id: 3,
+    //   position: "Business Analyst",
+    //   user: "urmommy",
+    //   status: 3,
+    //   company: "Figma",
+    // }
 
+    // let entry4 = {
+    //   id: 4,
+    //   position: "Data Analyst",
+    //   user: "weiuuhprfuhi p iu",
+    //   status: 4,
+    //   company: "HEB",
+    // }
 
-  })
+    // let entry5 = {
+    //   id: 5,
+    //   position: "Software Engineer",
+    //   user: "setge hwrhg b p iu",
+    //   status: 0,
+    //   company: "JP Morgan and Chase",
+    // }
+
+    axios.get("https://api.hikemail.net/users/getApplications/3")
+      .then((res: any) => {
+        console.log(res)
+        setApplications(res.data.rows)
+      })
+      .catch((err: Error) => {
+        console.error(err)
+      })
+    // setApplications([entry1, entry2, entry3, entry4, entry5]);
+  },[]);
 
 
   return (
@@ -152,10 +253,13 @@ export default function Dashboard() {
       <div className="dash-title">
       <h1> hike </h1>
       <div className="application-display">
-      <h3>Applications</h3>
+      <h1>Applications</h1>
+      <input type="text" className="search-bar" placeholder=" Search Company Name" onChange={handleChange} value={search} />
+
       <ul className="mapped-applications">
         {applications.map(App)}
       </ul>
+
       </div>
     </div>
     </div>
